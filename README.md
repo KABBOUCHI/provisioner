@@ -1,7 +1,7 @@
 ## Installation
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/KABBOUCHI/provisioner/9e61abe2627606b3b9fb48d2d5fcacef914feab7/provisioner-installer.sh) && source ~/.bashrc && provisioner install
+bash <(curl -s https://raw.githubusercontent.com/KABBOUCHI/provisioner/d3cbbe2d702c433b2a6c8954048191f663d8a874/provisioner-installer.sh) && source ~/.bashrc && provisioner install
 ```
 
 or 
