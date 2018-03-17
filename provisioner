@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+SOURCE="${BASH_SOURCE[0]}"
+
+if [[ -L $SOURCE ]]
+then
+    DIR=$(php -r "echo dirname(realpath('$SOURCE'));")
+else
+    DIR="$( cd "$( dirname "$SOURCE" )" && pwd )"
+fi
+
+if [ ! -f "$DIR/cli/provisioner.php" ]
+then
+    DIR=$(php -r "echo realpath('$DIR/../kabbouchi/provisioner');")
+fi
+
+if [[ "$EUID" -ne 0 ]]
+then
+    sudo $SOURCE "$@"
+    exit
+fi
+
+php "$DIR/cli/provisioner.php" "$@"
