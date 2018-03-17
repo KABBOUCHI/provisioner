@@ -15,6 +15,7 @@ use Provisioner\CommandLine;
 use Provisioner\MySql;
 use Provisioner\Nginx;
 use Provisioner\Php;
+use Provisioner\Redis;
 use Silly\Application;
 
 Container::setInstance(new Container);
@@ -23,7 +24,7 @@ $version = '0.0.1';
 
 $app = new Application('Provisioner', $version);
 
-$app->command('install', function () use ($app) {
+$app->command('install [--with-redis]', function ($redis) use ($app) {
 
     $apt = new Apt(new CommandLine);
     $apt->update();
@@ -31,6 +32,9 @@ $app->command('install', function () use ($app) {
     (new Nginx($apt, $apt->cli))->install();
     (new Php($apt))->install();
     (new MySql($apt))->install();
+
+    if ($redis)
+        (new Redis($apt))->install();
 
     info('Provisioner installed successfully!');
 })->descriptions('Install the Provisioner services');
