@@ -13,6 +13,7 @@ use Illuminate\Container\Container;
 use Provisioner\Apt;
 use Provisioner\CommandLine;
 use Provisioner\Nginx;
+use Provisioner\Php;
 use Silly\Application;
 
 Container::setInstance(new Container);
@@ -27,6 +28,7 @@ $app->command('install', function () use ($app) {
     $apt->update();
 
     (new Nginx($apt,$apt->cli))->install();
+    (new Php($apt))->install();
 
     info('Provisioner installed successfully!');
 })->descriptions('Install the Provisioner services');

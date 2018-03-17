@@ -2,25 +2,19 @@
 
 namespace Provisioner;
 
-class Nginx
+class Php
 {
-    const NGINX_CONF = '/usr/local/etc/nginx/nginx.conf';
+
     var $apt;
-    var $cli;
-    var $files;
-    var $configuration;
-    var $site;
 
     /**
      * Create a new Nginx instance.
      *
      * @param  Apt $apt
-     * @param  CommandLine $cli
      * @return void
      */
-    function __construct(Apt $apt, CommandLine $cli)
+    function __construct(Apt $apt)
     {
-        $this->cli = $cli;
         $this->apt = $apt;
     }
 
@@ -31,9 +25,13 @@ class Nginx
      */
     function install()
     {
-        if (!$this->apt->installed('nginx')) {
-            $this->apt->installQuietly('nginx');
-        }
+
+        $this->apt->cli->quietlyAsUser('apt install -y --force-yes php7.2-cli php7.2-dev \
+php7.2-pgsql php7.2-sqlite3 php7.2-gd \
+php7.2-curl php7.2-memcached \
+php7.2-imap php7.2-mysql php7.2-mbstring \
+php7.2-xml php7.2-zip php7.2-bcmath php7.2-soap \
+php7.2-intl php7.2-readline php7.2-mcrypt');
     }
 
     /**
@@ -44,7 +42,7 @@ class Nginx
     function restart()
     {
 
-        $this->cli->quietly('service nginx restart');
+        $this->apt->cli->quietly('service php7.2 restart');
     }
 
     function uninstall()
@@ -59,8 +57,8 @@ class Nginx
      */
     function stop()
     {
-        info('Stopping nginx...');
+        info('Stopping php...');
 
-        $this->cli->quietly('service nginx stop');
+        $this->apt->cli->quietly('service php7.2 stop');
     }
 }

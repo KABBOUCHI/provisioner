@@ -39,4 +39,11 @@ class Apt
     {
         $this->cli->runAsUser("apt-get update && apt-get upgrade -y");
     }
+
+    public function installQuietly($package)
+    {
+        info("Installing {$package}...");
+
+        $this->cli->quietlyAsUser("apt install -y " . $package);
+    }
 }
