@@ -26,7 +26,7 @@ class PhpFpm
     {
         info('Installing PHP FPM...');
 
-        $this->apt->installQuietly("php7.2-fpm");
+        $this->apt->installQuietly('php7.2-fpm');
 
         $this->apt->cli->quietlyAsUser('
         # Tweak Some PHP-FPM Settings
@@ -62,14 +62,12 @@ sed -i "s/# server_names_hash_bucket_size.*/server_names_hash_bucket_size 64;/" 
      *
      * @return void
      */
-    public
-    function restart()
+    public function restart()
     {
         $this->apt->cli->quietly('service php7.2-fpm restart');
     }
 
-    public
-    function uninstall()
+    public function uninstall()
     {
         $this->stop();
     }
@@ -79,8 +77,7 @@ sed -i "s/# server_names_hash_bucket_size.*/server_names_hash_bucket_size 64;/" 
      *
      * @return void
      */
-    public
-    function stop()
+    public function stop()
     {
         info('Stopping php fpm...');
 
