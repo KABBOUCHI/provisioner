@@ -29,5 +29,3 @@ echo 'export PATH="$PATH:$HOME/.config/composer/vendor/bin:$HOME/.composer/vendo
 . ~/.bashrc
 
 composer global require kabbouchi/provisioner:dev-master
-
-provisioner install
