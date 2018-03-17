@@ -26,7 +26,7 @@ class PhpFpm
     {
         info('Installing PHP FPM...');
 
-        $this->apt->installQuietly("php7.2-fpm");
+        $this->apt->installQuietly('php7.2-fpm');
 
         $this->apt->cli->quietlyAsUser('
 sed -i "s/error_reporting = .*/error_reporting = E_ALL/" /etc/php/7.2/fpm/php.ini
@@ -70,14 +70,12 @@ sed -i "s/;date.timezone.*/date.timezone = UTC/" /etc/php/7.2/fpm/php.ini
      *
      * @return void
      */
-    public
-    function restart()
+    public function restart()
     {
         $this->apt->cli->quietly('service php7.2-fpm restart');
     }
 
-    public
-    function uninstall()
+    public function uninstall()
     {
         $this->stop();
     }
@@ -87,8 +85,7 @@ sed -i "s/;date.timezone.*/date.timezone = UTC/" /etc/php/7.2/fpm/php.ini
      *
      * @return void
      */
-    public
-    function stop()
+    public function stop()
     {
         info('Stopping php fpm...');
 

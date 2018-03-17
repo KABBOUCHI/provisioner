@@ -13,9 +13,9 @@ use Provisioner\Apt;
 use Provisioner\Php;
 use Provisioner\MySql;
 use Provisioner\Nginx;
-use Provisioner\PhpFpm;
 use Provisioner\Redis;
 use Silly\Application;
+use Provisioner\PhpFpm;
 use Provisioner\CommandLine;
 use Illuminate\Container\Container;
 
