@@ -25,6 +25,7 @@ class Php
      */
     function install()
     {
+        info("Installing PHP...");
 
         $this->apt->cli->quietlyAsUser('apt install -y --force-yes php7.2-cli php7.2-dev \
 php7.2-pgsql php7.2-sqlite3 php7.2-gd \
