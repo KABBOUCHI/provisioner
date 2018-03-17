@@ -24,4 +24,8 @@ apt-get install -y --force-yes php7.2-cli
 curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 
+echo 'export PATH="$PATH:$HOME/.config/composer/vendor/bin:$HOME/.composer/vendor/bin"' >> ~/.bashrc
+
+source ~/.bashrc
+
 composer global require kabbouchi/provisioner:dev-master
