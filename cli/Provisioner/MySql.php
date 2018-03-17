@@ -31,7 +31,7 @@ class MySql
             $this->apt->cli->quietly('debconf-set-selections <<< "mariadb-server-10.0 mysql-server/root_password password ABC123456789"');
             $this->apt->cli->quietly('debconf-set-selections <<< "mariadb-server-10.0 mysql-server/root_password_again password ABC123456789"');
 
-            $this->apt->installQuietly('mariadb - server');
+            $this->apt->installQuietly('mariadb-server');
 
             $this->apt->cli->quietly('echo "" >> /etc/mysql/my.cnf');
             $this->apt->cli->quietly('echo "[mysqld]" >> /etc/mysql/my.cnf');
