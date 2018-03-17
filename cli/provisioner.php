@@ -12,6 +12,7 @@ if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
 use Illuminate\Container\Container;
 use Provisioner\Apt;
 use Provisioner\CommandLine;
+use Provisioner\MySql;
 use Provisioner\Nginx;
 use Provisioner\Php;
 use Silly\Application;
@@ -27,8 +28,9 @@ $app->command('install', function () use ($app) {
     $apt = new Apt(new CommandLine);
     $apt->update();
 
-    (new Nginx($apt,$apt->cli))->install();
+    (new Nginx($apt, $apt->cli))->install();
     (new Php($apt))->install();
+    (new MySql($apt))->install();
 
     info('Provisioner installed successfully!');
 })->descriptions('Install the Provisioner services');

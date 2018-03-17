@@ -8,7 +8,7 @@ class Php
     var $apt;
 
     /**
-     * Create a new Nginx instance.
+     * Create a new Php instance.
      *
      * @param  Apt $apt
      * @return void
@@ -19,7 +19,7 @@ class Php
     }
 
     /**
-     * Install the configuration files for Nginx.
+     * Install the configuration files for Php.
      *
      * @return void
      */
@@ -36,7 +36,7 @@ php7.2-intl php7.2-readline php7.2-mcrypt');
     }
 
     /**
-     * Restart the Nginx service.
+     * Restart the Php service.
      *
      * @return void
      */
@@ -52,7 +52,7 @@ php7.2-intl php7.2-readline php7.2-mcrypt');
     }
 
     /**
-     * Stop the Nginx service.
+     * Stop the Php service.
      *
      * @return void
      */
