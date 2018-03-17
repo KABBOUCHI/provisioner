@@ -36,7 +36,7 @@ sed -i "s/memory_limit = .*/memory_limit = 512M/" /etc/php/7.2/fpm/php.ini
 sed -i "s/;date.timezone.*/date.timezone = UTC/" /etc/php/7.2/fpm/php.ini
 ');
 
-        (new Filesystem())->put('/etc/nginx/sites-available', '
+        (new Filesystem())->put('/etc/nginx/sites-available/default', '
         server {
     listen 80 default_server;
     listen [::]:80 default_server;
