@@ -13,6 +13,7 @@ use Provisioner\Apt;
 use Provisioner\Php;
 use Provisioner\MySql;
 use Provisioner\Nginx;
+use Provisioner\PhpFpm;
 use Provisioner\Redis;
 use Silly\Application;
 use Provisioner\CommandLine;
@@ -30,6 +31,7 @@ $app->command('install [--with-redis]', function ($withRedis = null) use ($app) 
 
     (new Nginx($apt, $apt->cli))->install();
     (new Php($apt))->install();
+    (new PhpFpm($apt))->install();
     (new MySql($apt))->install();
 
     if ($withRedis) {
