@@ -30,4 +30,4 @@ source ~/.bashrc
 
 composer global require kabbouchi/provisioner:dev-master
 
-provisioner
+provisioner install
