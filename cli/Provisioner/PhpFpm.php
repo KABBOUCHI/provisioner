@@ -60,7 +60,7 @@ sed -i "s/;date.timezone.*/date.timezone = UTC/" /etc/php/7.2/fpm/php.ini
     }
 }
 ');
-        (new Nginx($this->apt,$this->apt->cli))->restart();
+        (new Nginx($this->apt, $this->apt->cli))->restart();
 
         $this->restart();
     }
