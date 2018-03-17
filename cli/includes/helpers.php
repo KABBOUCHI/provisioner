@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Container\Container;
-use Symfony\Component\Process\Process;
-use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Helper\Table;
-/**
+use Symfony\Component\Console\Output\ConsoleOutput;
+
+/*
  * Define the ~/.valet path as a constant.
  */
 define('PROVISIONER_HOME_PATH', $_SERVER['HOME'].'/.provisioner');
@@ -125,6 +125,7 @@ if (! function_exists('tap')) {
     function tap($value, callable $callback)
     {
         $callback($value);
+
         return $value;
     }
 }
@@ -136,22 +137,25 @@ if (! function_exists('ends_with')) {
      * @param  string|array  $needles
      * @return bool
      */
-    function ends_with($haystack, $needles) {
+    function ends_with($haystack, $needles)
+    {
         foreach ((array) $needles as $needle) {
             if (substr($haystack, -strlen($needle)) === (string) $needle) {
                 return true;
             }
         }
+
         return false;
     }
 }
 /**
- * Get the user
+ * Get the user.
  */
 function user()
 {
     if (! isset($_SERVER['SUDO_USER'])) {
         return $_SERVER['USER'];
     }
+
     return $_SERVER['SUDO_USER'];
 }

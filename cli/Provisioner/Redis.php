@@ -4,8 +4,7 @@ namespace Provisioner;
 
 class Redis
 {
-
-    var $apt;
+    public $apt;
 
     /**
      * Create a new Redis instance.
@@ -13,7 +12,7 @@ class Redis
      * @param  Apt $apt
      * @return void
      */
-    function __construct(Apt $apt)
+    public function __construct(Apt $apt)
     {
         $this->apt = $apt;
     }
@@ -23,10 +22,9 @@ class Redis
      *
      * @return void
      */
-    function install()
+    public function install()
     {
-        if (!$this->apt->installed('redis-server')) {
-
+        if (! $this->apt->installed('redis-server')) {
             $this->apt->installQuietly('redis-server');
 
             $this->apt->cli->quietly("sed -i 's/bind 127.0.0.1/bind 0.0.0.0/' /etc/redis/redis.conf");
@@ -40,13 +38,12 @@ class Redis
      *
      * @return void
      */
-    function restart()
+    public function restart()
     {
-
         $this->apt->cli->quietly('service redis-serve restart');
     }
 
-    function uninstall()
+    public function uninstall()
     {
         $this->stop();
     }
@@ -56,7 +53,7 @@ class Redis
      *
      * @return void
      */
-    function stop()
+    public function stop()
     {
         info('Stopping redis-server...');
 

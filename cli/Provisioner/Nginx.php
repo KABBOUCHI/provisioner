@@ -5,11 +5,11 @@ namespace Provisioner;
 class Nginx
 {
     const NGINX_CONF = '/usr/local/etc/nginx/nginx.conf';
-    var $apt;
-    var $cli;
-    var $files;
-    var $configuration;
-    var $site;
+    public $apt;
+    public $cli;
+    public $files;
+    public $configuration;
+    public $site;
 
     /**
      * Create a new Nginx instance.
@@ -18,7 +18,7 @@ class Nginx
      * @param  CommandLine $cli
      * @return void
      */
-    function __construct(Apt $apt, CommandLine $cli)
+    public function __construct(Apt $apt, CommandLine $cli)
     {
         $this->cli = $cli;
         $this->apt = $apt;
@@ -29,9 +29,9 @@ class Nginx
      *
      * @return void
      */
-    function install()
+    public function install()
     {
-        if (!$this->apt->installed('nginx')) {
+        if (! $this->apt->installed('nginx')) {
             $this->apt->installQuietly('nginx');
         }
     }
@@ -41,13 +41,12 @@ class Nginx
      *
      * @return void
      */
-    function restart()
+    public function restart()
     {
-
         $this->cli->quietly('service nginx restart');
     }
 
-    function uninstall()
+    public function uninstall()
     {
         $this->stop();
     }
@@ -57,7 +56,7 @@ class Nginx
      *
      * @return void
      */
-    function stop()
+    public function stop()
     {
         info('Stopping nginx...');
 

@@ -4,8 +4,7 @@ namespace Provisioner;
 
 class Php
 {
-
-    var $apt;
+    public $apt;
 
     /**
      * Create a new Php instance.
@@ -13,7 +12,7 @@ class Php
      * @param  Apt $apt
      * @return void
      */
-    function __construct(Apt $apt)
+    public function __construct(Apt $apt)
     {
         $this->apt = $apt;
     }
@@ -23,9 +22,9 @@ class Php
      *
      * @return void
      */
-    function install()
+    public function install()
     {
-        info("Installing PHP...");
+        info('Installing PHP...');
 
         $this->apt->cli->quietlyAsUser('apt install -y --force-yes php7.2-cli php7.2-dev \
 php7.2-pgsql php7.2-sqlite3 php7.2-gd \
@@ -40,13 +39,12 @@ php7.2-intl php7.2-readline php7.2-mcrypt');
      *
      * @return void
      */
-    function restart()
+    public function restart()
     {
-
         $this->apt->cli->quietly('service php7.2 restart');
     }
 
-    function uninstall()
+    public function uninstall()
     {
         $this->stop();
     }
@@ -56,7 +54,7 @@ php7.2-intl php7.2-readline php7.2-mcrypt');
      *
      * @return void
      */
-    function stop()
+    public function stop()
     {
         info('Stopping php...');
 

@@ -4,8 +4,7 @@ namespace Provisioner;
 
 class MySql
 {
-
-    var $apt;
+    public $apt;
 
     /**
      * Create a new MySql instance.
@@ -13,7 +12,7 @@ class MySql
      * @param  Apt $apt
      * @return void
      */
-    function __construct(Apt $apt)
+    public function __construct(Apt $apt)
     {
         $this->apt = $apt;
     }
@@ -23,10 +22,9 @@ class MySql
      *
      * @return void
      */
-    function install()
+    public function install()
     {
-        if (!$this->apt->installed('mariadb-server')) {
-
+        if (! $this->apt->installed('mariadb-server')) {
             $this->apt->cli->quietly('debconf-set-selections <<< "mariadb-server-10.0 mysql-server/data-dir select \'\'"');
             $this->apt->cli->quietly('debconf-set-selections <<< "mariadb-server-10.0 mysql-server/root_password password ABC123456789"');
             $this->apt->cli->quietly('debconf-set-selections <<< "mariadb-server-10.0 mysql-server/root_password_again password ABC123456789"');
@@ -36,7 +34,6 @@ class MySql
             $this->apt->cli->quietly('echo "" >> /etc/mysql/my.cnf');
             $this->apt->cli->quietly('echo "[mysqld]" >> /etc/mysql/my.cnf');
             $this->apt->cli->quietly('echo "character-set-server = utf8" >> /etc/mysql/my.cnf');
-
         }
     }
 
@@ -45,13 +42,12 @@ class MySql
      *
      * @return void
      */
-    function restart()
+    public function restart()
     {
-
         $this->apt->cli->quietly('service mysql restart');
     }
 
-    function uninstall()
+    public function uninstall()
     {
         $this->stop();
     }
@@ -61,7 +57,7 @@ class MySql
      *
      * @return void
      */
-    function stop()
+    public function stop()
     {
         info('Stopping mysql...');
 

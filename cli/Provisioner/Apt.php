@@ -4,7 +4,8 @@ namespace Provisioner;
 
 class Apt
 {
-    var $cli, $files;
+    public $cli;
+    public $files;
 
     /**
      * Create a new Brew instance.
@@ -12,7 +13,7 @@ class Apt
      * @param  CommandLine $cli
      * @return void
      */
-    function __construct(CommandLine $cli)
+    public function __construct(CommandLine $cli)
     {
         $this->cli = $cli;
     }
@@ -23,27 +24,27 @@ class Apt
      * @param  string $package
      * @return bool
      */
-    function installed($package)
+    public function installed($package)
     {
-        return in_array($package, explode(PHP_EOL, $this->cli->runAsUser('apt list --installed | grep ' . $package)));
+        return in_array($package, explode(PHP_EOL, $this->cli->runAsUser('apt list --installed | grep '.$package)));
     }
 
     public function install($package)
     {
         info("Installing {$package}...");
 
-        $this->cli->runAsUser("apt install -y " . $package);
+        $this->cli->runAsUser('apt install -y '.$package);
     }
 
     public function update()
     {
-        $this->cli->runAsUser("apt-get update && apt-get upgrade -y");
+        $this->cli->runAsUser('apt-get update && apt-get upgrade -y');
     }
 
     public function installQuietly($package)
     {
         info("Installing {$package}...");
 
-        $this->cli->quietlyAsUser("apt install -y " . $package);
+        $this->cli->quietlyAsUser('apt install -y '.$package);
     }
 }

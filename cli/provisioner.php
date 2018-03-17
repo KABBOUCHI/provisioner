@@ -3,20 +3,20 @@
 /**
  * Load correct autoloader depending on install location.
  */
-if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
-    require __DIR__ . '/../vendor/autoload.php';
+if (file_exists(__DIR__.'/../vendor/autoload.php')) {
+    require __DIR__.'/../vendor/autoload.php';
 } else {
-    require __DIR__ . '/../../../autoload.php';
+    require __DIR__.'/../../../autoload.php';
 }
 
-use Illuminate\Container\Container;
 use Provisioner\Apt;
-use Provisioner\CommandLine;
+use Provisioner\Php;
 use Provisioner\MySql;
 use Provisioner\Nginx;
-use Provisioner\Php;
 use Provisioner\Redis;
 use Silly\Application;
+use Provisioner\CommandLine;
+use Illuminate\Container\Container;
 
 Container::setInstance(new Container);
 
@@ -25,7 +25,6 @@ $version = '0.0.1';
 $app = new Application('Provisioner', $version);
 
 $app->command('install [--with-redis]', function ($redis) use ($app) {
-
     $apt = new Apt(new CommandLine);
     $apt->update();
 
@@ -33,14 +32,15 @@ $app->command('install [--with-redis]', function ($redis) use ($app) {
     (new Php($apt))->install();
     (new MySql($apt))->install();
 
-    if ($redis)
+    if ($redis) {
         (new Redis($apt))->install();
+    }
 
     info('Provisioner installed successfully!');
 })->descriptions('Install the Provisioner services');
 
 $app->command('run', function () {
-    info("Provisioner running...");
+    info('Provisioner running...');
 })->descriptions('Run Provisioner service');
 
 try {
