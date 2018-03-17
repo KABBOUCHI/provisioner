@@ -24,8 +24,6 @@ class PhpFpm
      */
     public function install()
     {
-        info('Installing PHP FPM...');
-
         $this->apt->installQuietly('php7.2-fpm');
 
         $this->apt->cli->quietlyAsUser('
