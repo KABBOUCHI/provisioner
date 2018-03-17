@@ -1,0 +1,1 @@
+bash <(curl -s https://raw.githubusercontent.com/KABBOUCHI/provisioner/master/provisioner-installer.sh)

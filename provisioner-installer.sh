@@ -12,9 +12,9 @@ apt-get upgrade -y
 
 apt-get install -y --force-yes software-properties-common
 
-apt-add-repository ppa:chris-lea/redis-server -y
-apt-add-repository ppa:ondrej/apache2 -y
-apt-add-repository ppa:ondrej/php -y
+LC_ALL=C.UTF-8 apt-add-repository ppa:chris-lea/redis-server -y
+LC_ALL=C.UTF-8 apt-add-repository ppa:ondrej/apache2 -y
+LC_ALL=C.UTF-8 apt-add-repository ppa:ondrej/php -y
 
 apt-get update
 apt-get upgrade -y
