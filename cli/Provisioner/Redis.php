@@ -25,8 +25,7 @@ class Redis
     public function install()
     {
         if (! $this->apt->installed('redis-server')) {
-
-            $this->apt->cli->quietly("LC_ALL=C.UTF-8 apt-add-repository ppa:chris-lea/redis-server -y");
+            $this->apt->cli->quietly('LC_ALL=C.UTF-8 apt-add-repository ppa:chris-lea/redis-server -y');
             $this->apt->update();
 
             $this->apt->installQuietly('redis-server');
