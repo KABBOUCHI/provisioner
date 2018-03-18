@@ -4,10 +4,8 @@ use Illuminate\Container\Container;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
-/*
- * Define the ~/.valet path as a constant.
- */
-define('PROVISIONER_HOME_PATH', $_SERVER['HOME'].'/.provisioner');
+
+define('PROVISIONER_HOME_PATH',  __DIR__ . '/../../');
 /**
  * Output the given text to the console.
  *
