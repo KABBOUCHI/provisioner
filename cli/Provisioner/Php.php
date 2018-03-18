@@ -24,7 +24,7 @@ class Php
      */
     public function install()
     {
-        $this->apt->cli->quietly("LC_ALL=C.UTF-8 apt-add-repository ppa:ondrej/php -y");
+        $this->apt->cli->quietly('LC_ALL=C.UTF-8 apt-add-repository ppa:ondrej/php -y');
         $this->apt->update();
 
         info('Installing PHP...');
