@@ -14,7 +14,7 @@ class CommandLine
      */
     public function quietly($command)
     {
-        $this->runCommand($command.' > /dev/null 2>&1');
+        $this->runCommand($command.' > /dev/null 2> ~/.provisioner/error.log');
     }
 
     /**
@@ -25,7 +25,7 @@ class CommandLine
      */
     public function quietlyAsUser($command)
     {
-        $this->quietly('sudo -u '.user().' '.$command.' > /dev/null 2>&1');
+        $this->quietly('sudo -u '.user().' '.$command.' > /dev/null 2> ~/.provisioner/error.log');
     }
 
     /**
