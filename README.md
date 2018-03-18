@@ -3,7 +3,7 @@
 #### Installation
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/KABBOUCHI/provisioner/d19f80e155c3f010146b2d3069bd1067951429f7/provisioner-installer.sh) && provisioner install
+bash <(curl -s https://raw.githubusercontent.com/KABBOUCHI/provisioner/36158f4905ba6cd16ba2a2c5e751111045d1720c/provisioner-installer.sh) && provisioner install
 ```
 
 or 
