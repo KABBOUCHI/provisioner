@@ -21,7 +21,7 @@ $app = new Application('Provisioner', $version);
 $app->command('install [--with-redis]', function ($withRedis = null) use ($app) {
     CommandLine::quietly('mkdir -p ~/.provisioner && touch ~/.provisioner/error.log');
     Apt::update();
-    CommandLine::quietly('apt-get install -y --force-yes software-properties-common  curl git');
+    CommandLine::quietly('apt-get install -y --force-yes software-properties-common  curl git zip unzip');
     Nginx::install();
     Php::install();
     PhpFpm::install();
