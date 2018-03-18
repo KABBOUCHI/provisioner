@@ -1,8 +1,8 @@
 <?php
-/** @var FastRoute\RouteCollector $route */
 
+/** @var FastRoute\RouteCollector $route */
 $route->get('/', function () {
-    return "API";
+    return 'API';
 });
 
 $route->get('/users', function () {

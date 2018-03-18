@@ -1,5 +1,7 @@
 <?php
+
 use Illuminate\Container\Container;
+
 class Facade
 {
     /**
@@ -11,6 +13,7 @@ class Facade
     {
         return 'Provisioner\\'.basename(str_replace('\\', '/', get_called_class()));
     }
+
     /**
      * Call a non-static method on the facade.
      *
@@ -21,14 +24,31 @@ class Facade
     public static function __callStatic($method, $parameters)
     {
         $resolvedInstance = Container::getInstance()->make(static::containerKey());
+
         return call_user_func_array([$resolvedInstance, $method], $parameters);
     }
 }
-class Apt extends Facade {}
-class Nginx extends Facade {}
-class CommandLine extends Facade {}
-class MySql extends Facade {}
-class Php extends Facade {}
-class Filesystem extends Facade {}
-class PhpFpm extends Facade {}
-class Serve extends Facade {}
+class Apt extends Facade
+{
+}
+class Nginx extends Facade
+{
+}
+class CommandLine extends Facade
+{
+}
+class MySql extends Facade
+{
+}
+class Php extends Facade
+{
+}
+class Filesystem extends Facade
+{
+}
+class PhpFpm extends Facade
+{
+}
+class Serve extends Facade
+{
+}

@@ -4,8 +4,7 @@ use Illuminate\Container\Container;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
-
-define('PROVISIONER_HOME_PATH',  __DIR__ . '/../../');
+define('PROVISIONER_HOME_PATH', __DIR__.'/../../');
 /**
  * Output the given text to the console.
  *

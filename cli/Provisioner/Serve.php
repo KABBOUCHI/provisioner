@@ -17,6 +17,6 @@ class Serve
 
     protected function serverCommand()
     {
-        return 'php -S 0.0.0.0:4444 ' . PROVISIONER_HOME_PATH . '/server/index.php';
+        return 'php -S 0.0.0.0:4444 '.PROVISIONER_HOME_PATH.'/server/index.php';
     }
 }

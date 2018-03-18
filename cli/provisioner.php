@@ -3,15 +3,14 @@
 /**
  * Load correct autoloader depending on install location.
  */
-if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
-    require __DIR__ . '/../vendor/autoload.php';
+if (file_exists(__DIR__.'/../vendor/autoload.php')) {
+    require __DIR__.'/../vendor/autoload.php';
 } else {
-    require __DIR__ . '/../../../autoload.php';
+    require __DIR__.'/../../../autoload.php';
 }
 
-use Illuminate\Container\Container;
-
 use Silly\Application;
+use Illuminate\Container\Container;
 
 Container::setInstance(new Container);
 
@@ -20,7 +19,6 @@ $version = '0.0.1';
 $app = new Application('Provisioner', $version);
 
 $app->command('install [--with-redis]', function ($withRedis = null) use ($app) {
-
     Apt::update();
     Nginx::install();
     Php::install();
