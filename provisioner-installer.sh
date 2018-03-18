@@ -9,7 +9,7 @@ apt-get upgrade -y > /dev/null 2>&1
 
 echo -e "\e[0;32mAdd A Few PPAs To Stay Current \e[0m"
 
-apt-get install -y --force-yes software-properties-common > /dev/null 2>&1
+apt-get install -y --force-yes software-properties-common git curl > /dev/null 2>&1
 
 LC_ALL=C.UTF-8 apt-add-repository ppa:chris-lea/redis-server -y > /dev/null 2>&1
 LC_ALL=C.UTF-8 apt-add-repository ppa:ondrej/apache2 -y > /dev/null 2>&1
