@@ -28,8 +28,9 @@ class Run extends Command
      */
     public function handle()
     {
-        if (!stripos(php_uname(), 'ubuntu')) {
+        if (! stripos(php_uname(), 'ubuntu')) {
             $this->error('Please run this program on Ubuntu machine!');
+
             return;
         }
     }
