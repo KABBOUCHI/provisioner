@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+docker build -f .docker/Dockerfile -t kabbouchi/ubuntu-73:latest .

@@ -1,0 +1,12 @@
+#chmod +x .docker/build
+#./.docker/build
+
+DIR=$(pwd)
+
+COMPOSE="docker run --rm -it -p 80:8080 -v ${DIR}:/~ -w /~ kabbouchi/ubuntu-73:latest "
+
+if [ $# -gt 0 ];then
+   $COMPOSE ./provisioner "$@"
+else
+    $COMPOSE bash
+fi
